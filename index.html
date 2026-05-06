@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AULUCK Digital Marketing Agency – Complete Business Growth System</title>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #9B7A2E;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --dark3: #222222;
+    --white: #FFFFFF;
+    --grey: #AAAAAA;
+    --grey2: #666666;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.1rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,10,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .logo { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.04em; }
+  .logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--grey); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--black); border: none;
+    padding: 0.55rem 1.4rem; border-radius: 6px; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 8rem 5% 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 860px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid rgba(201,168,76,0.4); border-radius: 50px;
+    padding: 0.4rem 1.1rem; font-size: 0.8rem; color: var(--gold);
+    margin-bottom: 2rem; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  h1 {
+    font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  }
+  h1 .gold { color: var(--gold); }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem); color: var(--grey); margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+  }
+  .hero-tags { color: var(--gold-light); font-size: 0.95rem; margin-bottom: 2.8rem; letter-spacing: 0.05em; }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--black); border: none;
+    padding: 0.85rem 2.2rem; border-radius: 8px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.25);
+    padding: 0.85rem 2.2rem; border-radius: 8px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: var(--gold); }
+  .stat-label { font-size: 0.78rem; color: var(--grey); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+
+  /* SECTIONS */
+  section { padding: 5rem 5%; }
+  .section-label { font-size: 0.78rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.8rem; }
+  .section-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+  .section-sub { color: var(--grey); font-size: 1.05rem; max-width: 600px; line-height: 1.7; }
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
+  .section-header .section-sub { margin: 0 auto; }
+  .gold-line { display: inline-block; width: 50px; height: 3px; background: var(--gold); border-radius: 2px; margin-bottom: 1.2rem; }
+
+  /* TRUST BAND */
+  .trust-band {
+    background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem 5%;
+  }
+  .trust-items { display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .trust-item {
+    display: flex; align-items: center; gap: 0.8rem;
+    padding: 0.8rem 1.8rem; background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2); border-radius: 50px;
+  }
+  .trust-icon { font-size: 1.4rem; }
+  .trust-text { font-size: 0.95rem; font-weight: 600; color: var(--gold); }
+
+  /* SERVICES */
+  .services-section { background: var(--dark); }
+  .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .cat-card {
+    background: var(--dark2); border: 1px solid rgba(201,168,76,0.12); border-radius: 14px;
+    padding: 1.8rem; transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .cat-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+  }
+  .cat-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-4px); }
+  .cat-card:hover::before { transform: scaleX(1); }
+  .cat-header { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.4rem; }
+  .cat-icon {
+    width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2); font-size: 1.3rem; flex-shrink: 0;
+  }
+  .cat-title { font-size: 1.05rem; font-weight: 700; color: var(--white); }
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .service-list li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--grey); }
+  .service-list li::before { content: '◆'; color: var(--gold); font-size: 0.45rem; flex-shrink: 0; }
+  .view-more { margin-top: 1.2rem; color: var(--gold); font-size: 0.85rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; }
+  .view-more:hover { gap: 0.6rem; }
+
+  /* SPECIAL SERVICES */
+  .special-section { background: var(--black); }
+  .special-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .special-card {
+    background: linear-gradient(135deg, var(--dark2) 0%, var(--dark3) 100%);
+    border: 1px solid rgba(201,168,76,0.25); border-radius: 16px; padding: 2.2rem;
+    text-align: center; transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .special-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .special-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+  .special-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .special-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--white); }
+  .special-desc { font-size: 0.9rem; color: var(--grey); line-height: 1.6; }
+  .special-tag { display: inline-block; margin-top: 1rem; padding: 0.3rem 0.9rem; background: rgba(201,168,76,0.12); color: var(--gold); font-size: 0.78rem; border-radius: 50px; font-weight: 600; letter-spacing: 0.06em; }
+
+  /* PORTFOLIO */
+  .portfolio-section { background: var(--dark); }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+  .portfolio-card {
+    background: var(--dark2); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+    overflow: hidden; transition: all 0.25s;
+  }
+  .portfolio-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-3px); }
+  .port-visual {
+    height: 180px; display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; position: relative; overflow: hidden;
+  }
+  .port-v1 { background: linear-gradient(135deg, #1a0a00, #3d2200); }
+  .port-v2 { background: linear-gradient(135deg, #000d1a, #001a33); }
+  .port-v3 { background: linear-gradient(135deg, #0a0a1a, #1a1a35); }
+  .port-v4 { background: linear-gradient(135deg, #0a1a00, #1a3300); }
+  .port-v5 { background: linear-gradient(135deg, #1a001a, #330033); }
+  .port-v6 { background: linear-gradient(135deg, #1a1400, #332800); }
+  .port-label {
+    position: absolute; bottom: 0.6rem; left: 0.6rem;
+    background: rgba(201,168,76,0.85); color: var(--black); font-size: 0.72rem; font-weight: 700;
+    padding: 0.25rem 0.7rem; border-radius: 4px; letter-spacing: 0.05em;
+  }
+  .port-info { padding: 1.1rem; }
+  .port-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .port-sub { font-size: 0.82rem; color: var(--grey); }
+
+  /* PROCESS */
+  .process-section { background: var(--black); }
+  .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .process-step {
+    text-align: center; padding: 2rem 1.2rem; background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.1); border-radius: 14px; position: relative;
+  }
+  .step-num {
+    width: 48px; height: 48px; border-radius: 50%; background: rgba(201,168,76,0.1);
+    border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 800; color: var(--gold); margin: 0 auto 1rem;
+  }
+  .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.85rem; color: var(--grey); line-height: 1.5; }
+
+  /* CONTACT */
+  .contact-section { background: var(--dark); }
+  .contact-wrapper {
+    max-width: 800px; margin: 0 auto;
+    background: var(--dark2); border: 1px solid rgba(201,168,76,0.2); border-radius: 20px;
+    padding: 3.5rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .contact-wrapper::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  }
+  .contact-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.8rem; }
+  .contact-sub { color: var(--grey); margin-bottom: 2.5rem; font-size: 1rem; line-height: 1.6; }
+  .contact-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .contact-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 700;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-whatsapp { background: #25D366; color: #fff; }
+  .btn-whatsapp:hover { background: #1ebe5a; transform: translateY(-2px); }
+  .btn-call { background: var(--gold); color: var(--black); }
+  .btn-call:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); color: #fff; }
+  .btn-ig:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-email { background: var(--dark3); color: var(--white); border: 1px solid rgba(255,255,255,0.15); }
+  .btn-email:hover { border-color: var(--gold); color: var(--gold); }
+  .contact-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin-bottom: 1.5rem; }
+  .contact-info { color: var(--grey); font-size: 0.9rem; }
+  .contact-info a { color: var(--gold); text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black); border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 2.5rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-brand .logo { font-size: 1.1rem; margin-bottom: 0.3rem; }
+  .footer-tagline { font-size: 0.82rem; color: var(--grey); letter-spacing: 0.06em; }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links a { color: var(--grey2); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.8rem; color: var(--grey2); }
+
+  /* SCROLL ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    nav { padding: 1rem 5%; }
+    section { padding: 3.5rem 5%; }
+    .hero { padding: 7rem 5% 4rem; }
+    .hero-stats { gap: 1.5rem; }
+    footer { flex-direction: column; text-align: center; }
+    .contact-wrapper { padding: 2rem 1.2rem; }
+    .contact-btns { flex-direction: column; align-items: center; }
+    .contact-btn { width: 100%; max-width: 280px; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">AULUCK <span>Digital</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#special">Special</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/918059674233" class="nav-cta">WhatsApp Now</a>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content fade-up">
+    <div class="hero-badge"><span class="badge-dot"></span> Complete Business Growth System</div>
+    <h1>We <span class="gold">Build & Grow</span><br>Your Business Online</h1>
+    <p class="hero-sub">India's Most Comprehensive Digital Marketing Agency</p>
+    <p class="hero-tags">Website &nbsp;|&nbsp; SEO &nbsp;|&nbsp; Paid Ads &nbsp;|&nbsp; AI Content &nbsp;|&nbsp; Printing Solutions</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">🔍 View Services</a>
+      <a href="https://wa.me/918059674233" class="btn-outline">💬 WhatsApp Now</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Services Offered</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Clients Served</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Growth Focused</div></div>
+      <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Client Ratings</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAND -->
+<div class="trust-band">
+  <div class="trust-items">
+    <div class="trust-item"><span class="trust-icon">🚀</span><span class="trust-text">60+ Services Available</span></div>
+    <div class="trust-item"><span class="trust-icon">🏆</span><span class="trust-text">All-in-One Digital Agency</span></div>
+    <div class="trust-item"><span class="trust-icon">📈</span><span class="trust-text">Growth Focused Strategy</span></div>
+    <div class="trust-item"><span class="trust-icon">🤖</span><span class="trust-text">AI-Powered Solutions</span></div>
+    <div class="trust-item"><span class="trust-icon">💎</span><span class="trust-text">Premium Quality Work</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-header fade-up">
+    <div class="gold-line"></div>
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">60+ Services Across 8 Categories</h2>
+    <p class="section-sub">Everything your business needs to grow online — under one roof, handled by experts.</p>
+  </div>
+  <div class="cat-grid">
+
+    <div class="cat-card fade-up">
+      <div class="cat-header">
+        <div class="cat-icon">🌐</div>
+        <div class="cat-title">Website & Funnel</div>
+      </div>
+      <ul class="service-list">
+        <li>Business Website Design</li>
+        <li>Landing Page Development</li>
+        <li>eCommerce Store Setup</li>
+        <li>Sales Funnel Creation</li>
+        <li>WordPress / Shopify Sites</li>
+        <li>Website Speed Optimization</li>
+      </ul>
+      <a class="view-more" href="#contact">View More →</a>
+    </div>
+
+    <div class="cat-card fade-up">
+      <div class="cat-header">
+        <div class="cat-icon">🔍</div>
+        <div class="cat-title">SEO & Organic Growth</div>
+      </div>
+      <ul class="service-list">
+        <li>On-Page SEO Optimization</li>
+        <li>Off-Page Link Building</li>
+        <li>Local SEO & Google Maps</li>
+        <li>Keyword Research & Strategy</li>
+        <li>Technical SEO Audit</li>
+        <li>YouTube SEO</li>
+      </ul>
+      <a class="view-more" href="#contact">View More →</a>
+    </div>
+
+    <div class="cat-card fade-up">
+      <div class="cat-header">
+        <div class="cat-icon">📢</div>
+        <div class="cat-title">Paid Ads</div>
+      </div>
+      <ul class="service-list">
+        <li>Google Ads (Search & Display)</li>
+        <li>Facebook & Instagram Ads</li>
+        <li>YouTube Video Ads</li>
+        <li>Retargeting Campaigns</li>
+        <li>WhatsApp Ads</li>
+        <li>Performance Max Campaigns</li>
+      </ul>
+      <a class="view-more" href="#contact">View More →</a>
+    </div>
+
+    <div class="cat-card fade-up">
+      <div class="cat-header">
+        <div class="cat-icon">🤖</div>
+        <div class="cat-title">AI & Content Creation</div>
+      </div>
+      <ul class="service-list">
+        <li>AI Blog & Article Writing</li>
+        <li>Social Media Content Plan</li>
+        <li>Product Description Writing</li>
+        <li>AI Image Generation</li>
+        <li>Email Marketing Copy</li>
+        <li>Script Writing for Reels/Ads</li>
+      </ul>
+      <a class="view-more" href="#contact">View More →</a>
+    </div>
+
+    <div class="cat-card fade-up">
+      <div class="cat-header">
+        <div class="cat-icon">🎬</div>
+        <div class="cat-title">Video Editing</div>
+      </div>
+      <ul class="service-list">
+        <li>Instagram Reels Editing</li>
+        <li>YouTube Video Editing</li>
+        <li>Ad Video Production</li>
+        <li>Product Showcase Videos</li>
+        <li>Motion Graphics & Intros</li>
+        <li>Subtitles & Captions</li>
+      </ul>
+      <a class="view-more" href="#contact">View More →</a>
+    </div>
+
+    <div class="cat-card fade-up">
+      <div class="cat-header">
+        <div class="cat-icon">🎨</div>
+        <div class="cat-title">Branding & Design</div>
+      </div>
+      <ul class="service-list">
+        <li>Logo Design & Brand Identity</li>
+        <li>Social Media Post Design</li>
+        <li>Banner & Poster Design</li>
+        <li>Business Card Design</li>
+        <li>Brand Style Guide</li>
+        <li>Packaging Design</li>
+      </ul>
+      <a class="view-more" href="#contact">View More →</a>
+    </div>
+
+    <div class="cat-card fade-up">
+      <div class="cat-header">
+        <div class="cat-icon">🖨️</div>
+        <div class="cat-title">Printing Services</div>
+      </div>
+      <ul class="service-list">
+        <li>Business Cards Printing</li>
+        <li>Flex & Banner Printing</li>
+        <li>Brochure & Catalogue Print</li>
+        <li>Sticker & Label Printing</li>
+        <li>Standee & Hoarding</li>
+        <li>Visiting Card Premium Print</li>
+      </ul>
+      <a class="view-more" href="#contact">View More →</a>
+    </div>
+
+    <div class="cat-card fade-up">
+      <div class="cat-header">
+        <div class="cat-icon">📊</div>
+        <div class="cat-title">Business Growth & Consulting</div>
+      </div>
+      <ul class="service-list">
+        <li>Digital Strategy Consulting</li>
+        <li>Business Profile Setup</li>
+        <li>Competitor Analysis</li>
+        <li>Monthly Growth Reports</li>
+        <li>CRM & Lead Management</li>
+        <li>Performance Tracking</li>
+      </ul>
+      <a class="view-more" href="#contact">View More →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SPECIAL SERVICES -->
+<section class="special-section" id="special">
+  <div class="section-header fade-up">
+    <div class="gold-line"></div>
+    <div class="section-label">Unique Offerings</div>
+    <h2 class="section-title">Special Services You Won't Find Everywhere</h2>
+    <p class="section-sub">We go beyond the ordinary. These exclusive services set us apart from every other agency.</p>
+  </div>
+  <div class="special-grid">
+    <div class="special-card fade-up">
+      <div class="special-icon">🖼️</div>
+      <div class="special-title">Old Photo Restoration</div>
+      <p class="special-desc">Bring your precious old, torn, or faded photos back to life using advanced AI restoration technology. HD quality results.</p>
+      <span class="special-tag">⭐ UNIQUE SERVICE</span>
+    </div>
+    <div class="special-card fade-up">
+      <div class="special-icon">🎭</div>
+      <div class="special-title">AI Image & Video Creation</div>
+      <p class="special-desc">Generate stunning, hyper-realistic AI images and videos for your brand, ads, or social media. Cutting-edge AI tools.</p>
+      <span class="special-tag">🤖 AI POWERED</span>
+    </div>
+    <div class="special-card fade-up">
+      <div class="special-icon">⚙️</div>
+      <div class="special-title">Automation Systems</div>
+      <p class="special-desc">Set up WhatsApp automation, email drip campaigns, lead nurturing systems, and CRM automation for your business.</p>
+      <span class="special-tag">🚀 ADVANCED TECH</span>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="section-header fade-up">
+    <div class="gold-line"></div>
+    <div class="section-label">Our Work</div>
+    <h2 class="section-title">Portfolio — Results That Speak</h2>
+    <p class="section-sub">From stunning designs to high-converting ad campaigns — see what we build for our clients.</p>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-card fade-up">
+      <div class="port-visual port-v1">
+        🏠<div class="port-label">BEFORE / AFTER</div>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Photo Restoration</div>
+        <div class="port-sub">AI-powered restoration of 50-year-old family photo</div>
+      </div>
+    </div>
+    <div class="portfolio-card fade-up">
+      <div class="port-visual port-v2">
+        📱<div class="port-label">SOCIAL MEDIA</div>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Instagram Growth Designs</div>
+        <div class="port-sub">30-day content calendar for fashion brand</div>
+      </div>
+    </div>
+    <div class="portfolio-card fade-up">
+      <div class="port-visual port-v3">
+        🎯<div class="port-label">AD CREATIVE</div>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Facebook Ad Campaign</div>
+        <div class="port-sub">340% ROAS achieved for real estate client</div>
+      </div>
+    </div>
+    <div class="portfolio-card fade-up">
+      <div class="port-visual port-v4">
+        🌐<div class="port-label">WEBSITE</div>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Business Website Design</div>
+        <div class="port-sub">Premium website for interior design studio</div>
+      </div>
+    </div>
+    <div class="portfolio-card fade-up">
+      <div class="port-visual port-v5">
+        🎬<div class="port-label">VIDEO EDIT</div>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Viral Reel Production</div>
+        <div class="port-sub">2M+ views on restaurant promotional reel</div>
+      </div>
+    </div>
+    <div class="portfolio-card fade-up">
+      <div class="port-visual port-v6">
+        🏷️<div class="port-label">BRANDING</div>
+      </div>
+      <div class="port-info">
+        <div class="port-title">Complete Brand Identity</div>
+        <div class="port-sub">Logo, colors, typography for clothing brand</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="section-header fade-up">
+    <div class="gold-line"></div>
+    <div class="section-label">How We Work</div>
+    <h2 class="section-title">Our Simple 4-Step Process</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step fade-up">
+      <div class="step-num">1</div>
+      <div class="step-title">Discovery Call</div>
+      <p class="step-desc">We understand your business, goals, and target audience in a free 30-min strategy call.</p>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-num">2</div>
+      <div class="step-title">Custom Strategy</div>
+      <p class="step-desc">We build a tailored growth plan covering services that matter most for YOUR business.</p>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-num">3</div>
+      <div class="step-title">Execution</div>
+      <p class="step-desc">Our expert team executes the plan with precision — on time, every time.</p>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-num">4</div>
+      <div class="step-title">Grow & Scale</div>
+      <p class="step-desc">We track results, optimize campaigns, and scale what works for maximum ROI.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-wrapper fade-up">
+    <div class="section-label" style="text-align:center;margin-bottom:0.8rem">Get In Touch</div>
+    <div class="contact-title">Ready to <span style="color:var(--gold)">Grow</span> Your Business?</div>
+    <p class="contact-sub">Talk to our experts today. Free consultation — no pressure, just real advice on how to grow your business online.</p>
+    <div class="contact-btns">
+      <a href="https://wa.me/918059674233" class="contact-btn btn-whatsapp">💬 WhatsApp Now</a>
+      <a href="tel:+918059674233" class="contact-btn btn-call">📞 Call Us</a>
+      <a href="https://www.instagram.com/theauluck?igsh=MTNzOW9ocXdjMzJsbQ==" class="contact-btn btn-ig">📸 Instagram</a>
+      <a href="mailto:chinuauluck@gmail.com" class="contact-btn btn-email">✉️ Email Us</a>
+    </div>
+    <hr class="contact-divider">
+    <div class="contact-info">
+      <a href="mailto:chinuauluck@gmail.com">chinuauluck@gmail.com</a> &nbsp;|&nbsp;
+      <a href="tel:+918059674233">+91 80596 74233</a> &nbsp;|&nbsp;
+      Bhagal, Cheeka, Kaithal, Haryana, India
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="logo">AULUCK <span>Digital</span></div>
+    <div class="footer-tagline">Complete Digital Growth Solutions</div>
+  </div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wa.me/918059674233">WhatsApp</a>
+  </div>
+  <div class="footer-copy">© 2025 AULUCK Digital. All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
